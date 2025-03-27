@@ -35,7 +35,7 @@ namespace BombaDeAgua_Api.Controllers
             {
                 ModelState.AddModelError("Correo", "El correo del usuario no puede ser vacio");
             }
-            else if (usuario.Contraseña == string.Empty)
+            else if (usuario.Contrasena == string.Empty)
             {
                 ModelState.AddModelError("Contraseña", "La contraseña del usuario no puede ser vacio");
             }
@@ -60,7 +60,7 @@ namespace BombaDeAgua_Api.Controllers
             if (string.IsNullOrWhiteSpace(usuario.Correo))
                 ModelState.AddModelError("Correo", "El correo del usuario no puede estar vacío.");
 
-            if (string.IsNullOrWhiteSpace(usuario.Contraseña))
+            if (string.IsNullOrWhiteSpace(usuario.Contrasena))
                 ModelState.AddModelError("Contraseña", "La contraseña del usuario no puede estar vacía.");
 
             if (!ModelState.IsValid)

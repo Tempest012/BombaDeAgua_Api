@@ -54,7 +54,8 @@ namespace BombaDeAgua_Api.Controllers
                 ModelState.AddModelError("IdUsuario", "El id del usuario no puede ser vacio");
             if (historial.Porcentaje == null)
                 ModelState.AddModelError("Porcentaje", "El porcentaje del historial no puede ser vacio");
-                return NotFound();
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
 
             await db.UpdateHistorial(historial);
             return Ok(historial);
@@ -62,7 +63,7 @@ namespace BombaDeAgua_Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveHistorial(int id)
         {
-            var historial = await db.GetHistorial(id);
+            var historial =  db.GetHistorial(id);
             if (historial == null)
                 return NotFound();
             await db.RemoveHistorial(id);

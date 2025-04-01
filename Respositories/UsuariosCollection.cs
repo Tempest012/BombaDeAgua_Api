@@ -31,7 +31,10 @@ namespace BombaDeAgua_Api.Respositories
         {
             return await Collection.FindAsync(new BsonDocument { { "Id", id } }).Result.FirstOrDefaultAsync();
         }
-
+        public async Task<UsuarioModel> GetUsuario(string email)
+        {
+            return await Collection.FindAsync(new BsonDocument { { "Correo", email } }).Result.FirstOrDefaultAsync();
+        }
         public async Task RemoveUsuario(int id)
         {
             var filter = Builders<UsuarioModel>.Filter.Eq(s => s.Id, id);

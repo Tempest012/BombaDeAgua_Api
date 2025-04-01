@@ -22,6 +22,15 @@ namespace BombaDeAgua_Api.Controllers
                 return NotFound();
             return Ok(usuario);
         }
+        [HttpGet("by-email/{correo}")]
+        public async Task<IActionResult> GetUsuarioPorCorreo(string correo)
+        {
+            var usuario = await db.GetUsuario(correo);
+            if (usuario == null)
+                return NotFound();
+            return Ok(usuario);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddUsuario([FromBody] UsuarioModel usuario)
         {
